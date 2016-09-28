@@ -6,24 +6,29 @@ function scoreThrows(arr) {
 	if(invalid.length > 0) {
 		throw new Error('Please only enter an array with numbers');
 	}
-
-	let zeroPoints = arr.filter(dart => {
-		return dart > 10;
-	});
-	let fivePoints = arr.filter (dart => {
-		return (dart >= 5 && dart <=10);
-	});
-	let tenPoints = arr.filter(dart => {
-		return dart < 5;
-	});
-
-	
-	if(fivePoints.length === 0 && zeroPoints.length === 0 && tenPoints.length > 0){
-		return 10*tenPoints.length+100;
-	} else {
-		return 5*fivePoints.length + 10*tenPoints.length;
+	if (arr.length < 1) {
+		return 0;
 	}
 
+	let dartsObj = arr.reduce((newObj,dart) => {
+		if(dart <= 10 && dart >= 5) {
+			newObj.score += 5;
+			newObj.perfect = false;
+			return newObj;
+		} else if (dart < 5) {
+			newObj.score += 10;
+			return newObj;
+		} else {
+			newObj.perfect = false;
+			return newObj;
+		}
+	},{score: 0, perfect: true});
+
+	if (dartsObj.perfect) {
+		return dartsObj.score + 100;
+	} else {
+		return dartsObj.score;
+	}
 }
 
 

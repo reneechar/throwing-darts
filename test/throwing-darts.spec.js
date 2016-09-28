@@ -11,7 +11,7 @@ let scoreZero = 0;
 let perfect = [0,1,2];
 let scorePerfect = 130;
 let emptyArr = [];
-let invalidArr = ['hi',123,1];
+let invalidArr = [123,1,'5'];
 
 
 describe('dartScore calculator', () => {
