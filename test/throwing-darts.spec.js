@@ -10,6 +10,8 @@ let zeroGame = [26,32,11,11];
 let scoreZero = 0;
 let perfect = [0,1,2];
 let scorePerfect = 130;
+let emptyArr = [];
+let invalidArr = ['hi',123,1];
 
 
 describe('dartScore calculator', () => {
@@ -22,6 +24,10 @@ describe('dartScore calculator', () => {
 		expect(dartScore(short)).to.equal(scoreShort);
 		expect(dartScore(zeroGame)).to.equal(scoreZero);
 		expect(dartScore(perfect)).to.equal(scorePerfect);
+		expect(dartScore(emptyArr)).to.equal(scoreZero);
 	});
+	it('should throw errors for non valid arguments that are passed in', () => {
+		expect(dartScore.bind(this,invalidArr)).to.throw(Error);
+	})
 
 })

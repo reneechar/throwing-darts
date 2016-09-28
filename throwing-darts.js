@@ -1,4 +1,12 @@
 function scoreThrows(arr) {
+	let invalid = arr.filter (dart => {
+		return typeof dart !== 'number';
+	});
+
+	if(invalid.length > 0) {
+		throw new Error('Please only enter an array with numbers');
+	}
+
 	let zeroPoints = arr.filter(dart => {
 		return dart > 10;
 	});
@@ -17,5 +25,6 @@ function scoreThrows(arr) {
 	}
 
 }
+
 
 module.exports = scoreThrows;
