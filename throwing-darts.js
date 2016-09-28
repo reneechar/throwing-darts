@@ -2,7 +2,7 @@ function scoreThrows(arr) {
 	if (arr.length < 1) {
 		return 0;
 	}
-	arr.forEach(dart => {
+	arr.some(dart => {
 		if (typeof dart !== 'number') {
 			throw new Error('Please only enter an array with numbers');
 		}
