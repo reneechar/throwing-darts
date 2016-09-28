@@ -1,15 +1,13 @@
 function scoreThrows(arr) {
-	let invalid = arr.filter (dart => {
-		return typeof dart !== 'number';
-	});
-
-	if(invalid.length > 0) {
-		throw new Error('Please only enter an array with numbers');
-	}
 	if (arr.length < 1) {
 		return 0;
 	}
-
+	arr.forEach(dart => {
+		if (typeof dart !== 'number') {
+			throw new Error('Please only enter an array with numbers');
+		}
+	});
+	
 	let dartsObj = arr.reduce((newObj,dart) => {
 		if(dart <= 10 && dart >= 5) {
 			newObj.score += 5;
